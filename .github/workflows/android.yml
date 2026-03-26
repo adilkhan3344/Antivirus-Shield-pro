@@ -1,4 +1,5 @@
-name: Build APK
+
+  name: Build APK
 on: [push]
 jobs:
   build:
@@ -6,8 +7,13 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+
       - name: Build with Buildozer
-        uses: Faras-D/buildozer-action@v1
+        uses: GearSnd/buildozer-action@v1
         with:
           command: buildozer android debug
           repository_display_name: AntivirusShield
